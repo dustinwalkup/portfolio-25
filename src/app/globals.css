@@ -14,6 +14,13 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
+  --color-pink: var(--pink);
+  --color-torquoise: var(--torquoise);
+  --color-yellow: var(--yellow);
+  --color-orange: var(--orange);
+
+  --color-custom-background: var(--custom-background);
+
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
 
@@ -91,6 +98,13 @@
 
 @layer base {
   :root {
+    --pink: #ff00ff;
+    --torquoise: #00ffff;
+    --yellow: #ffff00;
+    --orange: #ff00aa;
+
+    --custom-background: #280064;
+
     --background: 280 100% 5%;
     --foreground: 60 100% 95%;
     --card: 300 100% 10%;
