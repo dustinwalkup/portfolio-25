@@ -41,35 +41,40 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "backdrop-blur-xl bg-[#280064]/30" : "bg-transparent"
+        scrolled
+          ? "bg-custom-background/30 backdrop-blur-xl"
+          : "bg-transparent",
       )}
     >
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="text-xl font-bold tracking-tight">
-            <span className="hero-title psychedelic-text">Dustin</span>
-            <span className="hero-title text-[#00FFFF]">Walkup</span>
+            <h1>
+              <span className="hero-title psychedelic-text">Dustin</span>
+              <span className="hero-title text-torquoise">Walkup</span>
+            </h1>
           </Link>
         </div>
 
+        <h1></h1>
         {/* Desktop navigation */}
         <nav className="hidden md:flex md:gap-x-8">
           {navItems.map((item, index) => (
             <button
               key={item.name}
               onClick={() => scrollToSection(item.href)}
-              className="text-sm font-medium transition-colors hover:text-[#FFFF00]"
+              className="text-sm font-medium transition-colors"
               onMouseEnter={() => setHoverIndex(index)}
               onMouseLeave={() => setHoverIndex(null)}
               style={{
                 color:
                   hoverIndex === index
-                    ? "#FFFF00"
+                    ? "var(--yellow)"
                     : index % 3 === 0
-                    ? "#FF00FF"
-                    : index % 3 === 1
-                    ? "#00FFFF"
-                    : "#FFFF00",
+                      ? "var(--pink)"
+                      : index % 3 === 1
+                        ? "var(--torquoise)"
+                        : "var(--yellow)",
                 textShadow:
                   hoverIndex === index
                     ? "0 0 10px rgba(255,255,0,0.8)"
@@ -82,7 +87,6 @@ export default function Navbar() {
             </button>
           ))}
         </nav>
-
         {/* Mobile menu button */}
         <Button
           variant="ghost"
@@ -90,7 +94,7 @@ export default function Navbar() {
           className="md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           style={{
-            background: "linear-gradient(45deg, #FF00FF, #00FFFF)",
+            background: "linear-gradient(45deg, var(--pink), var(--torquoise))",
             borderRadius: "50%",
             boxShadow: "0 0 10px rgba(255,0,255,0.8)",
           }}
@@ -107,7 +111,7 @@ export default function Navbar() {
       {/* Mobile navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden">
-          <div className="space-y-1 px-4 pb-3 pt-2 backdrop-blur-xl bg-[#280064]/70">
+          <div className="bg-custom-background/70 space-y-1 px-4 pt-2 pb-3 backdrop-blur-xl">
             {navItems.map((item, index) => (
               <button
                 key={item.name}
@@ -116,10 +120,10 @@ export default function Navbar() {
                 style={{
                   color:
                     index % 3 === 0
-                      ? "#FF00FF"
+                      ? "var(--pink)"
                       : index % 3 === 1
-                      ? "#00FFFF"
-                      : "#FFFF00",
+                        ? "var(--torquoise)"
+                        : "var(--yellow)",
                   textShadow: "0 0 5px currentColor",
                 }}
               >
