@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ArrowDownIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const NAME = "Dustin Walkup";
 const WEB_DEVELOPER = "Web Developer";
@@ -46,29 +47,22 @@ export default function Hero() {
         <div className="space-y-6">
           <div className="relative">
             <h1 className="hero-title text-6xl font-bold tracking-wider sm:text-7xl md:text-8xl lg:text-9xl">
-              <span
-                className="distort-text from-pink via-torquoise to-yellow block bg-linear-to-r bg-clip-text text-transparent"
-                style={{
-                  filter: "drop-shadow(0 0 5px rgba(255,0,255,0.5))",
-                  textShadow: "0 0 10px rgba(255,0,255,0.3)",
-                }}
-              >
+              <span className="distort-text drop-shadow-glow from-primary via-secondary to-tertiary block bg-gradient-to-r bg-clip-text text-transparent">
                 {NAME}
               </span>
             </h1>
 
             {/* Decorative elements */}
-            <div className="bg-pink absolute -top-4 -left-4 h-8 w-8 rounded-full opacity-70 blur-md"></div>
-            <div className="bg-torquoise absolute -right-4 -bottom-4 h-8 w-8 rounded-full opacity-70 blur-md"></div>
+            <div className="bg-primary absolute -top-4 -left-4 h-8 w-8 rounded-full opacity-70 blur-md"></div>
+            <div className="bg-secondary absolute -right-4 -bottom-4 h-8 w-8 rounded-full opacity-70 blur-md"></div>
           </div>
 
           <p
-            className="hero-subtitle text-yellow mx-auto max-w-[700px] text-xl md:text-2xl"
-            style={{
-              textShadow: "0 0 10px rgba(255,255,0,0.8)",
-              letterSpacing: `${letterSpacing}em`,
-              transition: "letter-spacing 0.5s ease",
-            }}
+            className={cn(
+              "hero-subtitle mx-auto max-w-[700px] text-xl text-white md:text-2xl",
+              "l transition-all duration-500",
+            )}
+            style={{ letterSpacing: `${letterSpacing}em` }}
           >
             {WEB_DEVELOPER}
           </p>
@@ -78,11 +72,12 @@ export default function Hero() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-torquoise hover:bg-torquoise/20 rounded-full"
+              className={cn(
+                "rounded-full text-white hover:bg-[#00FFFF]/20",
+                "shadow-glow-cyan transition-transform duration-100",
+              )}
               onClick={scrollToAbout}
               style={{
-                boxShadow:
-                  "0 0 10px var(--torquoise), 0 0 20px var(--torquoise)",
                 transform: `rotate(${rotation}deg)`,
                 transition: "transform 0.1s linear",
               }}

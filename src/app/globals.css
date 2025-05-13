@@ -14,18 +14,18 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
-  --color-pink: var(--pink);
-  --color-torquoise: var(--torquoise);
-  --color-yellow: var(--yellow);
-  --color-orange: var(--orange);
+  --color-hot-pink: var(--hot-pink);
 
   --color-custom-background: var(--custom-background);
 
-  --color-primary: hsl(var(--primary));
+  --color-primary: var(--primary);
   --color-primary-foreground: hsl(var(--primary-foreground));
 
-  --color-secondary: hsl(var(--secondary));
+  --color-secondary: var(--secondary);
   --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: hsl(var(--tertiary-foreground));
 
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
@@ -98,10 +98,7 @@
 
 @layer base {
   :root {
-    --pink: #ff00ff;
-    --torquoise: #00ffff;
-    --yellow: #ffff00;
-    --orange: #ff00aa;
+    --hot-pink: #ff00aa;
 
     --custom-background: #280064;
 
@@ -111,10 +108,12 @@
     --card-foreground: 60 100% 95%;
     --popover: 280 100% 5%;
     --popover-foreground: 60 100% 95%;
-    --primary: 320 100% 60%;
+    --primary: #ff00ff;
     --primary-foreground: 60 100% 95%;
-    --secondary: 180 100% 50%;
+    --secondary: #00ffff;
     --secondary-foreground: 280 100% 10%;
+    --tertiary: #ffff00;
+    --tertiary-foreground: 280 100% 10%;
     --muted: 280 50% 15%;
     --muted-foreground: 60 100% 80%;
     --accent: 60 100% 50%;
@@ -176,43 +175,55 @@
 
 @keyframes pulse-glow {
   0% {
-    text-shadow: 0 0 3px rgba(255, 0, 255, 0.5), 0 0 5px rgba(255, 0, 255, 0.3);
+    text-shadow:
+      0 0 3px rgba(255, 0, 255, 0.5),
+      0 0 5px rgba(255, 0, 255, 0.3);
   }
   50% {
-    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5), 0 0 12px rgba(0, 255, 255, 0.3);
+    text-shadow:
+      0 0 8px rgba(0, 255, 255, 0.5),
+      0 0 12px rgba(0, 255, 255, 0.3);
   }
   100% {
-    text-shadow: 0 0 3px rgba(255, 0, 255, 0.5), 0 0 5px rgba(255, 0, 255, 0.3);
+    text-shadow:
+      0 0 3px rgba(255, 0, 255, 0.5),
+      0 0 5px rgba(255, 0, 255, 0.3);
   }
 }
 
 @keyframes color-shift {
   0% {
-    color: #ff00ff;
+    color: var(--primary);
   }
   25% {
-    color: #00ffff;
+    color: var(--secondary);
   }
   50% {
-    color: #ffff00;
+    color: var(--tertiary);
   }
   75% {
-    color: #ff00aa;
+    color: var(--hot-pink);
   }
   100% {
-    color: #ff00ff;
+    color: var(--primary);
   }
 }
 
 @keyframes border-glow {
   0% {
-    box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+    box-shadow:
+      0 0 5px var(--primary),
+      0 0 10px var(--primary);
   }
   50% {
-    box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff;
+    box-shadow:
+      0 0 15px var(--secondary),
+      0 0 25px var(--secondary);
   }
   100% {
-    box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+    box-shadow:
+      0 0 5px var(--primary),
+      0 0 10px var(--primary);
   }
 }
 
@@ -266,7 +277,13 @@
   backdrop-filter: blur(10px);
   background: rgba(255, 0, 255, 0.1);
   border: 2px solid;
-  border-image: linear-gradient(to right, #ff00ff, #00ffff, #ffff00) 1;
+  border-image: linear-gradient(
+      to right,
+      var(--primary),
+      var(--secondary),
+      var(--tertiary)
+    )
+    1;
 }
 
 .distort-text {
@@ -300,4 +317,55 @@
 .bangers-text {
   font-family: var(--font-bangers);
   letter-spacing: 0.05em;
+}
+
+@layer utilities {
+  .shadow-glow-fuchsia {
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+  }
+
+  .shadow-glow-cyan {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+
+  .shadow-glow-yellow {
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+  }
+
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 5px rgba(255, 0, 255, 0.5));
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+  }
+
+  .drop-shadow-glow-fuchsia {
+    filter: drop-shadow(0 0 5px rgba(255, 0, 255, 0.8));
+  }
+
+  .drop-shadow-glow-cyan {
+    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
+  }
+
+  .drop-shadow-glow-yellow {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.8));
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .hue-rotate-45 {
+    filter: hue-rotate(45deg);
+  }
+
+  .saturate-150 {
+    filter: saturate(1.5);
+  }
+
+  .mix-blend-normal {
+    mix-blend-mode: normal;
+  }
 }

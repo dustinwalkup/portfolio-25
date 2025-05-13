@@ -18,7 +18,6 @@ const navItems = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,13 +36,14 @@ export default function Navbar() {
     }
   };
 
+  // pick one of the three color classes by index
+  const colorClasses = ["text-primary", "text-secondary", "text-tertiary"];
+
   return (
     <header
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
-        scrolled
-          ? "bg-custom-background/30 backdrop-blur-xl"
-          : "bg-transparent",
+        scrolled ? "bg-custom-background/30 backdrop-blur-xl" : "bg-tranparent",
       )}
     >
       <div className="container flex h-16 items-center justify-between">
@@ -51,7 +51,7 @@ export default function Navbar() {
           <Link href="/" className="text-xl font-bold tracking-tight">
             <h1>
               <span className="hero-title psychedelic-text">Dustin</span>
-              <span className="hero-title text-torquoise">Walkup</span>
+              <span className="hero-title text-secondary">Walkup</span>
             </h1>
           </Link>
         </div>
@@ -63,25 +63,15 @@ export default function Navbar() {
             <button
               key={item.name}
               onClick={() => scrollToSection(item.href)}
-              className="text-sm font-medium transition-colors"
-              onMouseEnter={() => setHoverIndex(index)}
-              onMouseLeave={() => setHoverIndex(null)}
-              style={{
-                color:
-                  hoverIndex === index
-                    ? "var(--yellow)"
-                    : index % 3 === 0
-                      ? "var(--pink)"
-                      : index % 3 === 1
-                        ? "var(--torquoise)"
-                        : "var(--yellow)",
-                textShadow:
-                  hoverIndex === index
-                    ? "0 0 10px rgba(255,255,0,0.8)"
-                    : "none",
-                transform: hoverIndex === index ? "scale(1.1)" : "scale(1)",
-                transition: "all 0.3s ease",
-              }}
+              className={cn(
+                "transform text-sm font-medium transition-all duration-300 ease-in-out",
+                index % 3 === 0
+                  ? "text-primary"
+                  : index % 3 === 1
+                    ? "text-secondary"
+                    : "text-tertiary",
+                "hover:text-tertiary hover:scale-110 hover:[text-shadow:0_0_10px_rgba(255,255,0,0.8)]",
+              )}
             >
               {item.name}
             </button>
@@ -91,13 +81,8 @@ export default function Navbar() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="shadow-glow-fuchsia from-primary to-secondary rounded-full bg-gradient-to-r md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          style={{
-            background: "linear-gradient(45deg, var(--pink), var(--torquoise))",
-            borderRadius: "50%",
-            boxShadow: "0 0 10px rgba(255,0,255,0.8)",
-          }}
         >
           {mobileMenuOpen ? (
             <X className="h-6 w-6 text-black" />
@@ -116,16 +101,11 @@ export default function Navbar() {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full py-2 text-base font-medium transition-colors"
-                style={{
-                  color:
-                    index % 3 === 0
-                      ? "var(--pink)"
-                      : index % 3 === 1
-                        ? "var(--torquoise)"
-                        : "var(--yellow)",
-                  textShadow: "0 0 5px currentColor",
-                }}
+                className={cn(
+                  "block w-full py-2 text-base font-medium transition-colors",
+                  "[text-shadow:0_0_5px_currentColor]",
+                  colorClasses[index % colorClasses.length],
+                )}
               >
                 {item.name}
               </button>
