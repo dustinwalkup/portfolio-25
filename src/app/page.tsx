@@ -1,3 +1,4 @@
+import About from "@/components/about";
 import Hero from "@/components/hero";
 import Navbar from "@/components/navbar";
 
@@ -7,6 +8,7 @@ export default function Main() {
       <Navbar />
       <main className="relative z-10"></main>
       <Hero />
+      <About />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus,
         explicabo. Totam, ratione asperiores eveniet, illum consequuntur
