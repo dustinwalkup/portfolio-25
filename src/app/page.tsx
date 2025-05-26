@@ -1,6 +1,7 @@
 import About from "@/components/about";
 import Hero from "@/components/hero";
 import Navbar from "@/components/navbar";
+import Projects from "@/components/projects";
 
 export default function Main() {
   return (
@@ -9,30 +10,7 @@ export default function Main() {
       <main className="relative z-10"></main>
       <Hero />
       <About />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus,
-        explicabo. Totam, ratione asperiores eveniet, illum consequuntur
-        excepturi aliquam, ea ullam ab commodi architecto tenetur nihil amet et
-        quo voluptas vel?{" "}
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus,
-        explicabo. Totam, ratione asperiores eveniet, illum consequuntur
-        excepturi aliquam, ea ullam ab commodi architecto tenetur nihil amet et
-        quo voluptas vel?{" "}
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus,
-        explicabo. Totam, ratione asperiores eveniet, illum consequuntur
-        excepturi aliquam, ea ullam ab commodi architecto tenetur nihil amet et
-        quo voluptas vel?{" "}
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus,
-        explicabo. Totam, ratione asperiores eveniet, illum consequuntur
-        excepturi aliquam, ea ullam ab commodi architecto tenetur nihil amet et
-        quo voluptas vel?{" "}
-      </p>
+      <Projects />
     </div>
   );
 }
