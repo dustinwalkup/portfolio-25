@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { sendMessage } from "@/lib/actions";
+import { sendEmail } from "@/lib/actions";
 
 const ContactSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -54,7 +54,7 @@ export default function Contact() {
 
     startTransition(() => {
       console.log("sending message", formData);
-      sendMessage(formData)
+      sendEmail(formData)
         .then(() => {
           toast.success("Message sent!", {
             description: "Thanks for reaching out. I'll get back to you soon.",
