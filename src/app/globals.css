@@ -110,9 +110,9 @@
     --popover-foreground: 60 100% 95%;
     --primary: #ff00ff;
     --primary-foreground: 60 100% 95%;
-    --secondary: #00ffff;
+    --secondary: #00ffff; /*teal*/
     --secondary-foreground: 280 100% 10%;
-    --tertiary: #ffff00;
+    --tertiary: #ffff00; /*yellow*/
     --tertiary-foreground: 280 100% 10%;
     --muted: 280 50% 15%;
     --muted-foreground: 60 100% 80%;

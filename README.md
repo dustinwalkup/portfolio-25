@@ -37,19 +37,19 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 TODO:
 [x] Setup Resend email
+[ ] SEO and social previews
+[ ] Robots + sitemap
 [ ] Recaptcha
 [ ] Setup Google Analytics or similar
 [ ] Setup Sentry
 [ ] Setup Husky
 [ ] Setup Lint-staged
 [ ] README
-[ ] SEO and social previews
 [ ] Accessiblilty audit
 [ ] CI Checks (GitHub Actions, Vercel,)
 [ ] Custom 404 page
 [ ] Dark mode toggle
 [ ] Structured data
-[ ] Robots + sitemap
 [ ] CSP
 [ ] Implement testing
 [ ] Rate limiting contact form
